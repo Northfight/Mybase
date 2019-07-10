@@ -1,9 +1,8 @@
 class Account
-  
   attr_reader :name, :balance
   attr_accessor :amunt
   
-  def initialize(name,balance = 100)
+  def initialize(name, balance = 100)
     @name = name 
     @balance = balance
   end  
@@ -12,7 +11,7 @@ class Account
    puts pin_number == pin ? "Balance: $#{@balance}." : pin_error
   end
   
-  def withdraw(pin_number,amount)
+  def withdraw(pin_number, amount)
     @balance -= amount if pin_number == pin
     puts pin_number == pin ? "Withdrew #{amount}. New balance: $#{@balance}." : pin_error
   end
@@ -38,5 +37,6 @@ class Account
     return "Access denied: incorrect PIN."
   end
 end  
-checking_account = Account.new("Nick",1000)
+
+checking_account = Account.new("Nick", 1000)
 checking_account.deposit(1234)
