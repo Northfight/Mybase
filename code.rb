@@ -1,4 +1,5 @@
 class Account
+  
   attr_reader :name, :balance
   attr_accessor :amunt
   
@@ -12,8 +13,8 @@ class Account
   end
   
   def withdraw(pin_number,amount)
-    @balance-=amount if pin_number==pin
-    puts pin_number==pin ? "Withdrew #{amount}. New balance: $#{@balance}." : pin_error
+    @balance -= amount if pin_number == pin
+    puts pin_number == pin ? "Withdrew #{amount}. New balance: $#{@balance}." : pin_error
   end
   
   def deposit(pin_number)
