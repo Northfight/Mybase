@@ -69,4 +69,4 @@ case choice
     checking_account.withdraw(checking_account.get_pin)
   when "display"
     checking_account.display_balance(checking_account.get_pin)  
-end
+end 
