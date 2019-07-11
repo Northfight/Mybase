@@ -8,26 +8,30 @@ class Account
   end  
   
   def display_balance(pin_number)
-   puts pin_number == pin ? "Balance: $#{@balance}." : pin_error
+   puts pin_is_correct?(pin_number) ? "Balance: $#{balance}." : pin_error
   end
   
   def withdraw(pin_number, amount)
-    @balance -= amount if pin_number == pin
-    puts pin_number == pin ? "Withdrew #{amount}. New balance: $#{@balance}." : pin_error
+    @balance -= amount if pin_is_correct?(pin_number)
+    puts pin_is_correct?(pin_number) ? "Withdrew #{amount}. New balance: $#{balance}." : pin_error
   end
   
   def deposit(pin_number)
-    if  pin_number == pin
+    if  pin_is_correct?(pin_number)
       puts "How much money do you want to deposite?"
       @amunt = gets.chomp
       @balance += @amunt.to_i
-      puts "You deposit #{@amunt} dollars.Your balance #{@balance}" 
+      puts "You deposit #{amunt} dollars.Your balance #{balance}" 
     else 
       puts pin_error  
     end
   end
  
   private
+  
+  def pin_is_correct?(pin_number)
+    pin_number == pin
+  end
   
   def pin
     @pin = 1234
