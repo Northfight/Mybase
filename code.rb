@@ -58,7 +58,7 @@ class Account
   end
 end 
 
-checking_account = Account.new("Nick", 1000)
+checking_account = Account.new("Nick", 1000, 1234)
 
 puts "Please select what do you want to do?"
 puts " deposit - if you want deposite money"
