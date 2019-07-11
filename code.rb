@@ -18,7 +18,7 @@ class Account
   
   def deposit(pin_number)
     if  pin_is_correct?(pin_number)
-      puts "How much money do you want to deposite?"
+      puts "How much money do you want to deposit?"
       @amunt = gets.chomp
       @balance += @amunt.to_i
       puts "You deposit #{amunt} dollars.Your balance #{balance}" 
@@ -26,7 +26,7 @@ class Account
       puts pin_error  
     end
   end
- 
+
   private
   
   def pin_is_correct?(pin_number)
@@ -43,4 +43,7 @@ class Account
 end  
 
 checking_account = Account.new("Nick", 1000)
-checking_account.deposit(1234)
+
+puts "Please nter pincode: " 
+pincode = gets.chomp
+checking_account.deposit(pincode.to_i)
