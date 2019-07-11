@@ -2,7 +2,7 @@ class Account
   attr_reader :name, :balance
   attr_accessor :amunt, :pin
   
-  def initialize(name, balance = 100, pin)
+  def initialize(name, balance, pin)
     @name = name 
     @balance = balance
     @pin = pin.to_i
