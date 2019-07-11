@@ -9,7 +9,7 @@ class Account
   
   def get_pin
     puts "Please enter pincode: " 
-    pincode = gets.chomp.to_i   
+    @pincode = gets.chomp.to_i   
   end  
 
   def display_balance(pin_number)
