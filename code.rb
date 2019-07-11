@@ -63,10 +63,10 @@ puts " display - if you want display balance"
 choice = gets.chomp.downcase
 
 case choice
-    when "deposit"
-	  checking_account.deposit(checking_account.get_pin)
-	when "withdraw"
-	  checking_account.withdraw(checking_account.get_pin)
-	when "display"
-	  checking_account.display_balance(checking_account.get_pin)  
-	end
+  when "deposit"
+    checking_account.deposit(checking_account.get_pin)
+  when "withdraw"
+    checking_account.withdraw(checking_account.get_pin)
+  when "display"
+    checking_account.display_balance(checking_account.get_pin)  
+end
