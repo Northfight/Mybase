@@ -45,7 +45,7 @@ class Account
   end
   
   def pin
-    @pin = 1234
+    @pin ||= 1234
   end
   
   def pin_error
