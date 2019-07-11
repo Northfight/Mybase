@@ -1,11 +1,11 @@
 class Account
-  attr_reader :name, :balance, :pincode
-  attr_accessor :amunt
+  attr_reader :name, :balance
+  attr_accessor :amunt, :pin
   
   def initialize(name, balance = 100, pin)
     @name = name 
     @balance = balance
-    @pin = pin
+    @pin = pin.to_i
   end  
   
   def get_pin
@@ -15,18 +15,19 @@ class Account
   	puts "Try again"
   	@entered_pin = gets.chomp.to_i 
   end
+    @entered_pin
   end
 
   def display_balance(pin_number)
-   puts pin_is_correct?(pin_number) ? "Balance: $#{balance}." : pin_error
+   puts pin_is_correct?(pin_number) ? "Balance: $#{@balance}." : pin_error
   end
   
   def withdraw(pin_number)
     if  pin_is_correct?(pin_number)
       puts "How much money do you want to deposit?"
-      amount = gets.chomp.to_i
+      @amount = gets.chomp.to_i
       @balance -= amount 
-      puts "Withdrew #{amount}. New balance: $#{balance}." 
+      puts "Withdrew #{@amount}. New balance: $#{@balance}." 
     else
       puts pin_error
     end  
