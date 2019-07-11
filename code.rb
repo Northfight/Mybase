@@ -2,9 +2,10 @@ class Account
   attr_reader :name, :balance, :pincode
   attr_accessor :amunt
   
-  def initialize(name, balance = 100)
+  def initialize(name, balance = 100, pin)
     @name = name 
     @balance = balance
+    @pin = pin
   end  
   
   def get_pin
@@ -49,7 +50,7 @@ class Account
   end
   
   def correct_pin
-    @pin ||= 1234
+    @pin
   end
   
   def pin_error
