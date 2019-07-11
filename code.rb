@@ -9,8 +9,12 @@ class Account
   
   def get_pin
     puts "Please enter pincode: " 
-    @pincode = gets.chomp.to_i   
-  end  
+    @entered_pin = gets.chomp.to_i 
+  until pin_is_correct?(@entered_pin)
+  	puts "Try again"
+  	@entered_pin = gets.chomp.to_i 
+  end
+  end
 
   def display_balance(pin_number)
    puts pin_is_correct?(pin_number) ? "Balance: $#{balance}." : pin_error
@@ -41,10 +45,10 @@ class Account
   private
   
   def pin_is_correct?(pin_number)
-    pin_number == pin
+    pin_number == correct_pin
   end
   
-  def pin
+  def correct_pin
     @pin ||= 1234
   end
   
