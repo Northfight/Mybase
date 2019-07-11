@@ -64,9 +64,9 @@ choice = gets.chomp.downcase
 
 case choice
 when "deposit"
-  checking_account.deposit(pincode)
+  checking_account.deposit(checking_account.get_pin)
 when "withdraw"
-  checking_account.withdraw(pincode)
+  checking_account.withdraw(checking_account.get_pin)
 when "display"
-  checking_account.display_balance(pincode)  
+  checking_account.display_balance(checking_account.get_pin)  
 end 
