@@ -1,5 +1,5 @@
 class Account
-  attr_reader :name, :balance
+  attr_reader :name, :balance, :pincode
   attr_accessor :amunt
   
   def initialize(name, balance = 100)
@@ -64,9 +64,9 @@ choice = gets.chomp.downcase
 
 case choice
 when "deposit"
-  checking_account.deposit(checking_account.get_pin)
+  checking_account.deposit(pincode)
 when "withdraw"
-  checking_account.withdraw(checking_account.get_pin)
+  checking_account.withdraw(pincode)
 when "display"
-  checking_account.display_balance(checking_account.get_pin)  
+  checking_account.display_balance(pincode)  
 end 
