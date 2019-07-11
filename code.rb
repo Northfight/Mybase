@@ -6,12 +6,7 @@ class Account
     @name = name 
     @balance = balance
   end  
-  
-  def get_pin
-  puts "Please enter pincode: " 
-  pincode = gets.chomp.to_i   
-  end  
-  
+ 
   def display_balance(pin_number)
    puts pin_is_correct?(pin_number) ? "Balance: $#{balance}." : pin_error
   end
@@ -49,7 +44,7 @@ class Account
   end
   
   def pin_error
-    return "Access denied: incorrect PIN."
+    "Access denied: incorrect PIN."
   end
 end 
 
