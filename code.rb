@@ -12,8 +12,8 @@ class Account
     puts "Please enter pincode: " 
     @entered_pin = gets.chomp.to_i 
   until pin_is_correct?(@entered_pin)
-  	puts "Try again"
-  	@entered_pin = gets.chomp.to_i 
+    puts "Try again"
+    @entered_pin = gets.chomp.to_i 
   end
     @entered_pin
   end
@@ -24,15 +24,19 @@ class Account
   
   def withdraw(pin_number)
     if  pin_is_correct?(pin_number)
+        puts "Welcome #{@name}!"
       begin
         puts "How much money do you want to withdraw?"
         @amount = gets.chomp.to_i
-        @balance -= amount 
+        puts
+        @balance -= @amount 
         puts "Withdrew #{@amount}. New balance: $#{@balance}." 
         puts
         puts "Do you want to continue withdraw ? yes(y), no(n)"
         @answer = gets.chomp
       end while @answer == "y"
+        puts
+        puts "Thank you #{@name}!"
     else
       puts pin_error
     end  
@@ -40,15 +44,19 @@ class Account
  
   def deposit(pin_number)
     if  pin_is_correct?(pin_number)
+        puts "Welcome #{@name}!"
       begin
         puts "How much money do you want to deposit?"
         @amunt = gets.chomp
         @balance += @amunt.to_i
+        puts
         puts "You deposit #{amunt} dollars.Your balance #{balance}" 
         puts
-        puts "Do you want to continue withdraw ? yes(y), no(n)"
+        puts "Do you want to continue deposit ? yes(y), no(n)"
         @answer = gets.chomp
       end while @answer == "y"
+        puts
+        puts "Thank you #{@name}!"
     else 
       puts pin_error  
     end
@@ -71,18 +79,29 @@ end
 
 checking_account = Account.new("Nick", 1000, 1234)
 
-puts "Please select what do you want to do?"
+begin
+puts " Please select what do you want to do?"
 puts " deposit - if you want deposite money"
 puts " withdraw - if you want withdraw money"
 puts " display - if you want display balance"
-
+puts " exit - if you want exit"
 choice = gets.chomp.downcase
 
 case choice
 when "deposit"
   checking_account.deposit(checking_account.get_pin)
+  condition = true
 when "withdraw"
   checking_account.withdraw(checking_account.get_pin)
+  condition = true
 when "display"
-  checking_account.display_balance(checking_account.get_pin)  
+  checking_account.display_balance(checking_account.get_pin)
+  condition = true
+when "exit"
+  condition = false
+else
+   puts
+   puts "Input error"
+   condition = true  
 end 
+end while condition
