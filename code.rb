@@ -6,22 +6,22 @@ class Account
     @name = name 
     @balance = balance
     @pin = pin
-    @correct_pin_flag = true
+    @correct_pin_flag = false
   end  
   
   def display_balance
-    if @correct_pin_flag
+    unless @correct_pin_flag
       get_pin
-      puts "Welcome #{@name}!"
+      puts "\nWelcome #{@name}!"
     end
     puts "\nBalance: $#{@balance}." 
-    @correct_pin_flag = false
+    @correct_pin_flag = true
   end
   
   def withdraw
-    if @correct_pin_flag 
+    unless @correct_pin_flag 
       get_pin
-      puts "Welcome #{@name}!"
+      puts "\nWelcome #{@name}!"
     end  
     begin
       puts "\nHow much money do you want to withdraw?"
@@ -32,13 +32,13 @@ class Account
       @answer = gets.chomp
     end while @answer == "y"
     puts "\nThank you #{@name}!"
-    correct_pin_flag = false
+    @correct_pin_flag = true
   end  
  
   def deposit
-    if @correct_pin_flag
+    unless @correct_pin_flag
       get_pin
-      puts "Welcome #{@name}!"
+      puts "\nWelcome #{@name}!"
     end
     begin
       puts "\nHow much money do you want to deposit?"
@@ -50,7 +50,7 @@ class Account
     end while @answer == "y"
     puts
     puts "\nThank you #{@name}!"
-    @correct_pin_flag = false
+    @correct_pin_flag = true
   end
 
   private
