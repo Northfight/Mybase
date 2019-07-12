@@ -11,8 +11,8 @@ class Account
   
   def display_balance
     if @correct_pin_flag
-    get_pin
-    puts "Welcome #{@name}!"
+      get_pin
+      puts "Welcome #{@name}!"
     end
     puts "\nBalance: $#{@balance}." 
     @correct_pin_flag = false
@@ -20,8 +20,8 @@ class Account
   
   def withdraw
     if @correct_pin_flag 
-    get_pin
-    puts "Welcome #{@name}!"
+      get_pin
+      puts "Welcome #{@name}!"
     end  
     begin
       puts "\nHow much money do you want to withdraw?"
@@ -37,8 +37,8 @@ class Account
  
   def deposit
     if @correct_pin_flag
-    get_pin
-    puts "Welcome #{@name}!"
+      get_pin
+      puts "Welcome #{@name}!"
     end
     begin
       puts "\nHow much money do you want to deposit?"
