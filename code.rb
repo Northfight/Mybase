@@ -5,18 +5,9 @@ class Account
   def initialize(name, balance, pin)
     @name = name 
     @balance = balance
-    @pin = pin
+    @pin = pin.to_i
   end  
   
-  def get_pin
-    puts "Please enter pincode: " 
-    @entered_pin = gets.chomp
-  until pin_is_correct?(@entered_pin)
-    puts "Pin error, try again"
-    @entered_pin = gets.chomp 
-  end
-  end
-
   def display_balance
    get_pin
    puts
@@ -59,6 +50,15 @@ class Account
 
   private
   
+  def get_pin
+    puts "Please enter pincode: " 
+    @entered_pin = gets.chomp.to_i 
+  until pin_is_correct?(@entered_pin)
+    puts "Pin error, try again"
+    @entered_pin = gets.chomp.to_i 
+  end
+  end
+  
   def pin_is_correct?(pin_number)
     pin_number == correct_pin
   end
@@ -66,6 +66,7 @@ class Account
   def correct_pin
     @pin
   end
+  
 end 
 
 checking_account = Account.new("Nick", 1000, 1234)
@@ -97,4 +98,5 @@ else
    puts "Input error"
    condition = true  
 end 
+end while condition
 end while condition
