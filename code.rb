@@ -57,21 +57,16 @@ class Account
   
   def get_pin
     puts "Please enter pincode: " 
-    @entered_pin = gets.chomp.to_i
-    until pin_is_correct?(@entered_pin)
+    entered_pin = gets.chomp.to_i
+    until pin_is_correct?(entered_pin)
       puts "Pin error, try again"
-      @entered_pin = gets.chomp.to_i
+      entered_pin = gets.chomp.to_i
     end
   end
   
   def pin_is_correct?(pin_number)
-    pin_number == correct_pin.to_i
+    pin_number == @pin
   end
-  
-  def correct_pin
-    @pin
-  end
-  
 end 
 
 checking_account = Account.new("Nick", 1234, 1000)
