@@ -5,7 +5,7 @@ class Account
   def initialize(name, balance, pin)
     @name = name 
     @balance = balance
-    @pin = pin.to_i
+    @pin = pin
   end  
   
   def display_balance
@@ -52,10 +52,10 @@ class Account
   
   def get_pin
     puts "Please enter pincode: " 
-    @entered_pin = gets.chomp.to_i 
+    @entered_pin = gets.chomp
   until pin_is_correct?(@entered_pin)
     puts "Pin error, try again"
-    @entered_pin = gets.chomp.to_i 
+    @entered_pin = gets.chomp
   end
   end
   
