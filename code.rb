@@ -18,12 +18,12 @@ class Account
     @entered_pin
   end
 
-  def display_balance(pin_number)
-   puts pin_is_correct?(pin_number) ? "Balance: $#{@balance}." : pin_error
+  def display_balance
+   puts pin_is_correct?(get_pin) ? "Balance: $#{@balance}." : pin_error
   end
   
-  def withdraw(pin_number)
-    if  pin_is_correct?(pin_number)
+  def withdraw
+    if  pin_is_correct?(get_pin)
       puts "Welcome #{@name}!"
     begin
       puts "How much money do you want to withdraw?"
@@ -42,8 +42,8 @@ class Account
     end  
   end  
  
-  def deposit(pin_number)
-    if pin_is_correct?(pin_number)
+  def deposit
+    if  pin_is_correct?(get_pin)
       puts "Welcome #{@name}!"
     begin
       puts "How much money do you want to deposit?"
@@ -54,7 +54,7 @@ class Account
       puts
       puts "Do you want to continue deposit ? yes(y), no(n)"
       @answer = gets.chomp
-    end while @answer == "y"
+      end while @answer == "y"
       puts
       puts "Thank you #{@name}!"
     else 
@@ -85,17 +85,18 @@ puts " deposit - if you want deposite money"
 puts " withdraw - if you want withdraw money"
 puts " display - if you want display balance"
 puts " exit - if you want exit"
+
 choice = gets.chomp.downcase
 
 case choice
 when "deposit"
-  checking_account.deposit(checking_account.get_pin)
+  checking_account.deposit
   condition = true
 when "withdraw"
-  checking_account.withdraw(checking_account.get_pin)
+  checking_account.withdraw
   condition = true
 when "display"
-  checking_account.display_balance(checking_account.get_pin)
+  checking_account.display_balance
   condition = true
 when "exit"
   condition = false
