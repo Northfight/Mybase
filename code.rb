@@ -2,7 +2,7 @@ class Account
   attr_reader :name, :balance
   attr_accessor :amunt, :pin
   
-  def initialize(name, balance, pin)
+  def initialize(name, pin, balance = 1000)
     @name = name 
     @balance = balance
     @pin = pin
@@ -69,7 +69,7 @@ class Account
   
 end 
 
-checking_account = Account.new("Nick", 1000, 1234)
+checking_account = Account.new("Nick", 1234, 1000)
 
 begin
 puts
