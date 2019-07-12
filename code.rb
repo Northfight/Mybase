@@ -1,62 +1,56 @@
 class Account
   attr_reader :name, :balance 
-  attr_accessor :amunt, :pin, :control
+  attr_accessor :amunt, :pin, :correct_pin_flag
   
   def initialize(name, pin, balance = 1000)
     @name = name 
     @balance = balance
     @pin = pin
-    @control = 0
+    @correct_pin_flag = true
   end  
   
   def display_balance
-    if @control < 1
+    if @correct_pin_flag
     get_pin
     puts "Welcome #{@name}!"
     end
-    puts
-    puts "Balance: $#{@balance}." 
-    @control += 1
+    puts "\nBalance: $#{@balance}." 
+    @correct_pin_flag = false
   end
   
   def withdraw
-    if @control < 1
+    if @correct_pin_flag 
     get_pin
     puts "Welcome #{@name}!"
     end  
     begin
-      puts "How much money do you want to withdraw?"
+      puts "\nHow much money do you want to withdraw?"
       @amount = gets.chomp.to_i
-      puts
       @balance -= @amount 
-      puts "Withdrew #{@amount}. New balance: $#{@balance}." 
-      puts
-      puts "Do you want to continue withdraw ? yes(y), no(n)"
+      puts "\nWithdrew #{@amount}. New balance: $#{@balance}." 
+      puts "\nDo you want to continue withdraw ? yes(y), no(n)"
       @answer = gets.chomp
     end while @answer == "y"
-    puts
-    puts "Thank you #{@name}!"
-    @control += 1
+    puts "\nThank you #{@name}!"
+    correct_pin_flag = false
   end  
  
   def deposit
-    if @control < 1
+    if @correct_pin_flag
     get_pin
     puts "Welcome #{@name}!"
     end
     begin
-      puts "How much money do you want to deposit?"
+      puts "\nHow much money do you want to deposit?"
       @amunt = gets.chomp
       @balance += @amunt.to_i
-      puts
-      puts "You deposit #{amunt} dollars.Your balance #{balance}" 
-      puts
-      puts "Do you want to continue deposit ? yes(y), no(n)"
+      puts "\nYou deposit #{amunt} dollars.Your balance #{balance}" 
+      puts "\nDo you want to continue deposit ? yes(y), no(n)"
       @answer = gets.chomp
     end while @answer == "y"
     puts
-    puts "Thank you #{@name}!"
-    @control += 1
+    puts "\nThank you #{@name}!"
+    @correct_pin_flag = false
   end
 
   private
@@ -83,10 +77,8 @@ end
 checking_account = Account.new("Nick", 1234, 1000)
 
 begin
-puts
-puts "Please select what do you want to do?"
-puts
-puts "deposit - if you want deposite money"
+puts "\nPlease select what do you want to do?"
+puts "\ndeposit - if you want deposite money"
 puts "withdraw - if you want withdraw money"
 puts "display - if you want display balance"
 puts "exit - if you want exit"
