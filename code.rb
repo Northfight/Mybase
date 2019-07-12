@@ -24,39 +24,39 @@ class Account
   
   def withdraw(pin_number)
     if  pin_is_correct?(pin_number)
-        puts "Welcome #{@name}!"
-      begin
-        puts "How much money do you want to withdraw?"
-        @amount = gets.chomp.to_i
-        puts
-        @balance -= @amount 
-        puts "Withdrew #{@amount}. New balance: $#{@balance}." 
-        puts
-        puts "Do you want to continue withdraw ? yes(y), no(n)"
-        @answer = gets.chomp
-      end while @answer == "y"
-        puts
-        puts "Thank you #{@name}!"
+      puts "Welcome #{@name}!"
+    begin
+      puts "How much money do you want to withdraw?"
+      @amount = gets.chomp.to_i
+      puts
+      @balance -= @amount 
+      puts "Withdrew #{@amount}. New balance: $#{@balance}." 
+      puts
+      puts "Do you want to continue withdraw ? yes(y), no(n)"
+      @answer = gets.chomp
+    end while @answer == "y"
+      puts
+      puts "Thank you #{@name}!"
     else
       puts pin_error
     end  
   end  
  
   def deposit(pin_number)
-    if  pin_is_correct?(pin_number)
-        puts "Welcome #{@name}!"
-      begin
-        puts "How much money do you want to deposit?"
-        @amunt = gets.chomp
-        @balance += @amunt.to_i
-        puts
-        puts "You deposit #{amunt} dollars.Your balance #{balance}" 
-        puts
-        puts "Do you want to continue deposit ? yes(y), no(n)"
-        @answer = gets.chomp
-      end while @answer == "y"
-        puts
-        puts "Thank you #{@name}!"
+    if pin_is_correct?(pin_number)
+      puts "Welcome #{@name}!"
+    begin
+      puts "How much money do you want to deposit?"
+      @amunt = gets.chomp
+      @balance += @amunt.to_i
+      puts
+      puts "You deposit #{amunt} dollars.Your balance #{balance}" 
+      puts
+      puts "Do you want to continue deposit ? yes(y), no(n)"
+      @answer = gets.chomp
+    end while @answer == "y"
+      puts
+      puts "Thank you #{@name}!"
     else 
       puts pin_error  
     end
