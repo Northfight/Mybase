@@ -24,21 +24,31 @@ class Account
   
   def withdraw(pin_number)
     if  pin_is_correct?(pin_number)
-      puts "How much money do you want to deposit?"
-      @amount = gets.chomp.to_i
-      @balance -= amount 
-      puts "Withdrew #{@amount}. New balance: $#{@balance}." 
+      begin
+        puts "How much money do you want to withdraw?"
+        @amount = gets.chomp.to_i
+        @balance -= amount 
+        puts "Withdrew #{@amount}. New balance: $#{@balance}." 
+        puts
+        puts "Do you want to continue withdraw ? yes(y), no(n)"
+        @answer = gets.chomp
+      end while @answer == "y"
     else
       puts pin_error
     end  
   end  
-  
+ 
   def deposit(pin_number)
     if  pin_is_correct?(pin_number)
-      puts "How much money do you want to deposit?"
-      @amunt = gets.chomp
-      @balance += @amunt.to_i
-      puts "You deposit #{amunt} dollars.Your balance #{balance}" 
+      begin
+        puts "How much money do you want to deposit?"
+        @amunt = gets.chomp
+        @balance += @amunt.to_i
+        puts "You deposit #{amunt} dollars.Your balance #{balance}" 
+        puts
+        puts "Do you want to continue withdraw ? yes(y), no(n)"
+        @answer = gets.chomp
+      end while @answer == "y"
     else 
       puts pin_error  
     end
