@@ -1,6 +1,6 @@
 class Account
   attr_reader :name, :balance, :pin
-  attr_accessor :amunt, :correct_pin_flag
+  attr_accessor :correct_pin_flag, :input
   
   def initialize(name:, pin:, balance: 1000)
     @name = name 
@@ -16,41 +16,42 @@ class Account
   def withdraw
     input_pin
     puts "\nHow much money do you want to withdraw?"
-    @amount = gets.chomp.to_i
-    @balance -= @amount 
+    user_input
+    @balance -= @input 
     puts "\nWithdrew #{@amount}. New balance: $#{@balance}." 
   end  
  
   def deposit
     input_pin
     puts "\nHow much money do you want to deposit?"
-    @amunt = gets.chomp.to_i
-    @balance += @amunt
-    puts "\nYou deposit #{amunt} dollars.Your balance #{balance}" 
+    user_input
+    @balance += @input
+    puts "\nYou deposit #{@input} dollars.Your balance #{@balance}" 
   end
 
   private
   
-  def get_pin
-    puts "Please enter pincode: " 
-    entered_pin = gets.chomp.to_i
-    until pin_is_correct?(entered_pin)
+  def input_pin
+    unless @correct_pin_flag 
+      puts "Please enter pincode: " 
+      user_input
+    until pin_is_correct?(@input)
       puts "Pin error, try again"
-      entered_pin = gets.chomp.to_i
+      user_input
+    end
+      puts "\nWelcome #{@name}!"
+      @correct_pin_flag = true
     end
   end
+
+  def user_input
+    @input = gets.chomp.to_i
+  end  
   
   def pin_is_correct?(pin_number)
     pin_number == @correct_pin
   end
 
-  def input_pin
-    unless @correct_pin_flag 
-      get_pin
-      puts "\nWelcome #{@name}!"
-      @correct_pin_flag = true
-    end  
-  end  
 end 
 
 checking_account = Account.new(pin: 1234, name: "Nick")
