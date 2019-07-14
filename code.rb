@@ -18,7 +18,7 @@ class Account
     puts "\nHow much money do you want to withdraw?"
     user_input
     @balance -= @input 
-    puts "\nWithdrew #{@amount}. New balance: $#{@balance}." 
+    change_message(@input,@balance) 
   end  
  
   def deposit
@@ -26,10 +26,14 @@ class Account
     puts "\nHow much money do you want to deposit?"
     user_input
     @balance += @input
-    puts "\nYou deposit #{@input} dollars.Your balance #{@balance}" 
+    change_message(@input,@balance)
   end
 
   private
+  
+  def change_message(input,balance)
+    puts "\nYour balance has been changed to #{input} dollars. New balance #{balance}"
+  end
   
   def input_pin
     unless @correct_pin_flag 
